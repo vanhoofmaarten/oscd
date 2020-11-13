@@ -1,13 +1,16 @@
 <template>
   <div class="layout">
     <header>
-      <div class="brand">OSCD</div>
+      <div class="brand">OSCD2020</div>
       <button v-if="!$auth.loggedIn" @click="$auth.loginWith('github')">
         Login with GitHub
       </button>
-      <div v-else>
-        Logged in as: <strong>{{ login }}</strong>
-      </div>
+      <template v-else>
+        <div>
+          Logged in as: <strong>{{ login }}</strong>
+        </div>
+        <button class="logout" @click="$auth.logout()">Logout</button>
+      </template>
     </header>
     <main>
       <nuxt />
@@ -54,5 +57,9 @@ header {
 main {
   flex-grow: 1;
   padding: 1.5rem;
+}
+
+.logout {
+  margin-left: 0.75rem;
 }
 </style>

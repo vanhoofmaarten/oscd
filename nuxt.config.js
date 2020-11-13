@@ -1,3 +1,7 @@
+import dotenvJson from 'dotenv-json'
+
+dotenvJson()
+
 export default {
   target: 'static',
   ssr: false,

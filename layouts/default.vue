@@ -56,6 +56,5 @@ main {
 footer {
   background-color: #eee;
   padding: 1.5rem;
-  text-align: right;
 }
 </style>

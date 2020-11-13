@@ -15,6 +15,10 @@
     <main>
       <nuxt />
     </main>
+    <footer>
+      Powered by
+      <a target="_blank" rel="noopener" href="https://isaac.nl">ISAAC</a>
+    </footer>
   </div>
 </template>
 
@@ -31,6 +35,11 @@ export default {
 <style>
 body {
   font-family: sans-serif;
+}
+
+a {
+  color: #000;
+  text-decoration: underline;
 }
 </style>
 
@@ -61,5 +70,11 @@ main {
 
 .logout {
   margin-left: 0.75rem;
+}
+
+footer {
+  background-color: #eee;
+  padding: 1.5rem;
+  text-align: right;
 }
 </style>

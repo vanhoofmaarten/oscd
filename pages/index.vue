@@ -14,7 +14,9 @@
           <tbody>
             <tr v-for="repository in contributions" :key="repository.id">
               <td>
-                <a :href="repository.url">{{ repository.name }}</a>
+                <a target="_blank" rel="noopener" :href="repository.url">
+                  {{ repository.owner }}/{{ repository.name }}
+                </a>
               </td>
               <td>{{ formatNumber(repository.additions) }}</td>
               <td>{{ formatNumber(repository.deletions) }}</td>
@@ -119,7 +121,8 @@ export default {
       return {
         id: base.repo.id,
         name: base.repo.name,
-        url: base.repo.url,
+        url: base.repo.html_url,
+        owner,
         additions,
         deletions,
       }

@@ -2,15 +2,6 @@
   <div class="layout">
     <header>
       <div class="brand">OSCD2020</div>
-      <button v-if="!$auth.loggedIn" @click="$auth.loginWith('github')">
-        Login with GitHub
-      </button>
-      <template v-else>
-        <div>
-          Logged in as: <strong>{{ login }}</strong>
-        </div>
-        <button class="logout" @click="$auth.logout()">Logout</button>
-      </template>
     </header>
     <main>
       <nuxt />
@@ -21,16 +12,6 @@
     </footer>
   </div>
 </template>
-
-<script>
-export default {
-  computed: {
-    login() {
-      return this.$auth.user?.login
-    },
-  },
-}
-</script>
 
 <style>
 body {

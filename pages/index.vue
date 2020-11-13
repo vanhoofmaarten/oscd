@@ -1,45 +1,37 @@
 <template>
   <div>
     <section>
-      <template v-if="$auth.loggedIn">
-        <table v-if="loaded">
-          <thead>
-            <tr>
-              <th>Project</th>
-              <th>Code added</th>
-              <th>Code removed</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="repository in contributions" :key="repository.id">
-              <td>
-                <a target="_blank" rel="noopener" :href="repository.url">
-                  {{ repository.owner }}/{{ repository.name }}
-                </a>
-              </td>
-              <td>{{ formatNumber(repository.additions) }}</td>
-              <td>{{ formatNumber(repository.deletions) }}</td>
-              <td></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>{{ contributions.length }}</td>
-              <td>{{ formatNumber(additions) }}</td>
-              <td>{{ formatNumber(deletions) }}</td>
-              <td>{{ formatNumber(linesOfCode) }}</td>
-            </tr>
-          </tfoot>
-        </table>
-        <div v-else>Loading ...</div>
-      </template>
-      <template v-else>
-        <p>Login with your GitHub account to view data.</p>
-        <button v-if="!$auth.loggedIn" @click="$auth.loginWith('github')">
-          Login with GitHub
-        </button>
-      </template>
+      <table v-if="loaded">
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>Code added</th>
+            <th>Code removed</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="repository in contributions" :key="repository.id">
+            <td>
+              <a target="_blank" rel="noopener" :href="repository.url">
+                {{ repository.owner }}/{{ repository.name }}
+              </a>
+            </td>
+            <td>{{ formatNumber(repository.additions) }}</td>
+            <td>{{ formatNumber(repository.deletions) }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>{{ contributions.length }}</td>
+            <td>{{ formatNumber(additions) }}</td>
+            <td>{{ formatNumber(deletions) }}</td>
+            <td>{{ formatNumber(linesOfCode) }}</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div v-else>Loading ...</div>
     </section>
   </div>
 </template>
@@ -104,10 +96,8 @@ export default {
     },
   },
 
-  mounted() {
-    if (this.$auth.loggedIn) {
-      this.getData()
-    }
+  created() {
+    this.getData()
   },
 
   methods: {

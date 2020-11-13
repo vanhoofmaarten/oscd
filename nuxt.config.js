@@ -24,21 +24,11 @@ export default {
 
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
 
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth'],
+  modules: ['@nuxtjs/axios'],
 
   build: {},
 
   generate: {
     crawler: false,
-  },
-
-  auth: {
-    strategies: {
-      github: {
-        client_id: process.env.GITHUB_CLIENT_ID,
-        client_secret: process.env.GITHUB_CLIENT_SECRET,
-        response_type: 'code',
-      },
-    },
   },
 }
